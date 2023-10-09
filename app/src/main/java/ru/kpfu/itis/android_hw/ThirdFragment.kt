@@ -1,7 +1,6 @@
 package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
 import ru.kpfu.itis.android_hw.databinding.FragmentThirdBinding
@@ -15,8 +14,8 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
 
         binding?.run {
-            if(arguments?.getString(ThirdFragment.ARG_TEXT) != ""){
-                titleTv.text = arguments?.getString(ThirdFragment.ARG_TEXT)
+            if(arguments?.getString(ARG_TEXT) != ""){
+                titleTv.text = arguments?.getString(ARG_TEXT)
             } else {
                 titleTv.text = "Third Fragment"
             }

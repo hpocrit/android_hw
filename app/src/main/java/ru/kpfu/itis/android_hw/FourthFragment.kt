@@ -17,7 +17,7 @@ class FourthFragment : Fragment(R.layout.fragment_fourth) {
 
         binding?.run {
 
-            setFragmentResultListener("requestKey", ) { key, bundle ->
+            setFragmentResultListener("requestKey") { _, bundle ->
                 val result = bundle.getString("bundleKey")
                 if(cnt % 3 == 0) {
                     title1Tv.text = result
@@ -29,17 +29,6 @@ class FourthFragment : Fragment(R.layout.fragment_fourth) {
                     title3Tv.text = result
                     cnt += 1
                 }
-            }
-        }
-    }
-
-    companion object{
-
-        private const val ARG_TEXT = "name_arg"
-
-        fun newInstance(text: String) = FourthFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_TEXT, text)
             }
         }
     }

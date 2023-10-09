@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Главный Экран</string>
+    <string name="app_name">Homework №1</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="enter">Enter</string>
     <string name="go_to_first">go to first</string>
@@ -7,4 +7,6 @@
     <string name="third_fragment">Third Fragment</string>
     <string name="second_fragment">Second Fragment</string>
     <string name="save">Save</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="text">text</string>
 </resources>

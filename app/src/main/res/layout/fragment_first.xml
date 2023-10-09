@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="@string/app_name"
+        android:text="@string/first_fragment"
         android:gravity="center"
         app:textAllCaps="true"
         app:layout_constraintTop_toTopOf="parent"

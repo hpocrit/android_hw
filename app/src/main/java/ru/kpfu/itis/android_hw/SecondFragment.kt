@@ -1,10 +1,8 @@
 package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
-import org.junit.Test.None
 import ru.kpfu.itis.android_hw.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment(R.layout.fragment_second) {
@@ -15,8 +13,8 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         binding = FragmentSecondBinding.bind(view)
 
         binding?.run {
-            if(arguments?.getString(SecondFragment.ARG_TEXT) != ""){
-                titleTv.text = arguments?.getString(SecondFragment.ARG_TEXT)
+            if(arguments?.getString(ARG_TEXT) != ""){
+                titleTv.text = arguments?.getString(ARG_TEXT)
             } else {
                 titleTv.text = "Second Fragment"
             }
@@ -36,7 +34,7 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
 
                 parentFragmentManager
                     .beginTransaction()
-                    .replace(R.id.container, ThirdFragment.newInstance(arguments?.getString(SecondFragment.ARG_TEXT).toString()))
+                    .replace(R.id.container, ThirdFragment.newInstance(arguments?.getString(ARG_TEXT).toString()))
                     .addToBackStack("first")
                     .commit()
 
