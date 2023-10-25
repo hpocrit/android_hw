@@ -1,7 +1,6 @@
 package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

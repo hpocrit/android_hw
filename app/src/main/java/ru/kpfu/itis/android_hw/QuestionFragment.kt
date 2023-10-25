@@ -12,7 +12,7 @@ import ru.kpfu.itis.android_hw.databinding.FragmentQuestionBinding
 
 class QuestionFragment : Fragment(R.layout.fragment_question) {
     private var binding: FragmentQuestionBinding? = null
-    var questions = QuestionsRepository.list
+    private var questions = QuestionsRepository.list
 
     private var optionsAdapter: OptionsAdapter? = null
 
@@ -87,18 +87,18 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         optionsAdapter!!.notifyDataSetChanged()
     }
 
-    fun isAllChecked(n: Int) : Boolean {
+    private fun isAllChecked(n: Int) : Boolean {
         var vis = true
         for (i in 1 until n){
             val question = questions[i]
             var loc_vis = false
             question.options.forEach {
-                if(it.isChecked == true) {
+                if(it.isChecked) {
                     loc_vis = true
                     return@forEach
                 }
             }
-            if(loc_vis == false) {
+            if(!loc_vis) {
                 vis = false
 
             }

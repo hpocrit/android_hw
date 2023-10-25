@@ -8,8 +8,8 @@ import ru.kpfu.itis.android_hw.databinding.ItemOptionBinding
 
 class OptionsAdapter(
     val dataset: List<Option>,
-    val onItemChecked: (Int) -> Unit,
-    var onRootClicked: (Int) -> Unit)
+    private val onItemChecked: (Int) -> Unit,
+    private var onRootClicked: (Int) -> Unit)
     :  RecyclerView.Adapter<OptionItem>() {
 
 

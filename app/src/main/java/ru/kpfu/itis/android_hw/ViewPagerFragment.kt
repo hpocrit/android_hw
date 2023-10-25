@@ -2,7 +2,6 @@ package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.kpfu.itis.android_hw.databinding.FragmentPagerViewBinding
@@ -18,7 +17,6 @@ class ViewPagerFragment : Fragment(R.layout.fragment_pager_view) {
         val circularViewPagerListener = ViewPagerListener(viewBinding.viewPager)
 
         viewBinding.viewPager.registerOnPageChangeCallback(circularViewPagerListener)
-
 
     }
 

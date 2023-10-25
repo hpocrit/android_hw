@@ -1,11 +1,7 @@
 package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import ru.kpfu.itis.android_hw.databinding.FragmentStartBinding
@@ -21,8 +17,6 @@ class StartFragment : Fragment(R.layout.fragment_start) {
             button.isEnabled = false
 
             val phoneMaskTextWatcher = PhoneMaskTextWatcher(phoneEt)
-
-
 
             var op_1 = false
             var op_2 = false
