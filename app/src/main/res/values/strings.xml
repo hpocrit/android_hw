@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">android_hw</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="cnt_of_element">Введите количество элементов</string>
+    <string name="enter">enter</string>
+    <string name="click">Нажми</string>
+    <string name="pattern">dd/MM/yyyy</string>
 </resources>
