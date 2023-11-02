@@ -17,9 +17,8 @@ class ButtonViewHolder(
 
     init {
         viewBinding.button.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFragment(adapter!!)
+            val bottomSheetFragment = BottomSheetFragment(adapter)
             bottomSheetFragment.show(fragmentManager, bottomSheetFragment.tag)
-
         }
     }
     fun bindItem() {

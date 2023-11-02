@@ -64,6 +64,4 @@ object NewsRepository {
         }
         return -1
     }
-
-
 }

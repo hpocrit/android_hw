@@ -94,13 +94,10 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 }
                 val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
                 itemTouchHelper.attachToRecyclerView(newsRv)
-            }else {
-
             }
         }
     }
     companion object{
-
         private const val ARG_CNT = "cnt_arg"
 
         fun newInstance(text: Int) = NewsFragment().apply {
@@ -126,8 +123,4 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
         snackbar.show()
     }
-
-
-
-
 }

@@ -1,12 +1,8 @@
 package ru.kpfu.itis.android_hw.holders
 
-import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import ru.kpfu.itis.android_hw.MainActivity
-import ru.kpfu.itis.android_hw.NewsAdapter
 import ru.kpfu.itis.android_hw.NewsModel
-import ru.kpfu.itis.android_hw.NewsRepository
 import ru.kpfu.itis.android_hw.R
 import ru.kpfu.itis.android_hw.databinding.ItemNewsBinding
 
