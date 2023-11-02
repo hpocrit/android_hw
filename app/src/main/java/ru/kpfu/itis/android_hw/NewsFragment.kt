@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import ru.kpfu.itis.android_hw.databinding.FragmentNewsBinding
 
-
 class NewsFragment : Fragment(R.layout.fragment_news) {
     private var binding: FragmentNewsBinding? = null
     private var newsAdapter: NewsAdapter? = null
