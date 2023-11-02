@@ -12,18 +12,13 @@ import ru.kpfu.itis.android_hw.databinding.ItemNewsBinding
 
 class NewsViewHolder (
     val viewBinding: ItemNewsBinding,
-    //private val onNewsClicked: ((NewsModel.News) -> Unit),
     private val onLikeClicked: ((Int, NewsModel.News) -> Unit),
     private val onDeleteClicked: ((NewsModel.News) -> Unit)
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
     private var item: NewsModel.News? = null
-    val list = NewsRepository.getAllNews()
 
     init {
-        //viewBinding.root.setOnClickListener {
-        //    this.item?.let(onNewsClicked)
-        //}
         viewBinding.likeBtnIv.setOnClickListener {
             this.item?.let {
                 val data = it.copy(isLiked = !it.isLiked)

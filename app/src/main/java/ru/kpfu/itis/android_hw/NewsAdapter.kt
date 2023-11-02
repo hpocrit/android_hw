@@ -1,14 +1,10 @@
 package ru.kpfu.itis.android_hw
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import by.kirich1409.viewbindingdelegate.activityViewBinding
-import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.kpfu.itis.android_hw.databinding.ItemButtonBinding
 import ru.kpfu.itis.android_hw.databinding.ItemDateBinding
 import ru.kpfu.itis.android_hw.databinding.ItemNewsBinding
@@ -18,7 +14,6 @@ import ru.kpfu.itis.android_hw.holders.NewsViewHolder
 
 
 class NewsAdapter(
-    //private val onNewsClicked: ((NewsModel.News) -> Unit),
     private val onLikeClicked: ((Int, NewsModel.News) -> Unit),
     private var cnt: Int,
     private val fragmentManager: FragmentManager,
@@ -36,7 +31,7 @@ class NewsAdapter(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                ), //onNewsClicked = onNewsClicked,
+                ),
                 onLikeClicked = onLikeClicked,
                 onDeleteClicked = onDeleteClicked
             )

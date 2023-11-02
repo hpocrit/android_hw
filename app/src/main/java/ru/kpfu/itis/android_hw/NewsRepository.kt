@@ -66,6 +66,4 @@ object NewsRepository {
     }
 
 
-
-
 }

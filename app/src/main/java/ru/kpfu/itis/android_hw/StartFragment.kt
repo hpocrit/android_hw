@@ -2,7 +2,6 @@ package ru.kpfu.itis.android_hw
 
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import ru.kpfu.itis.android_hw.databinding.FragmentStartBinding

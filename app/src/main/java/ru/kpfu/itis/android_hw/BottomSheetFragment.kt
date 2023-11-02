@@ -28,9 +28,7 @@ class BottomSheetFragment(var adapter: NewsAdapter) : BottomSheetDialogFragment(
         btnAddNews?.setOnClickListener {
             val number = etAddNewsCount?.text.toString().toIntOrNull() ?: 0
             if (number in 1..5) {
-                //adapter.setItems(
                     NewsRepository.addRandomItems(number)
-                //)
                 adapter.setCnt(number)
                 adapter.notifyDataSetChanged()
 

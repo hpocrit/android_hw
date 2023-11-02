@@ -7,7 +7,6 @@ import ru.kpfu.itis.android_hw.databinding.FragmentNewsDetailsBinding
 
 class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
     private var binding: FragmentNewsDetailsBinding? = null
-    private val NAME_KEY = "key"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,12 +27,6 @@ class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
         }
 
 
-    }
-
-    fun getBundle(transitionName: String?): Bundle? {
-        val args = Bundle()
-        args.putString(NAME_KEY, transitionName)
-        return args
     }
 
     companion object{

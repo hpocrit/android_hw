@@ -111,7 +111,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
 
-
     private fun onLikeClicked(position: Int, news: NewsModel.News) {
         newsAdapter?.updateItem(position, news)
     }
