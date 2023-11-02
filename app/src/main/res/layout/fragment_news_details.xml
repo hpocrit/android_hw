@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Заголовок новости" />
+        tools:text="@string/title" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/news_image_iv"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/news_image_iv"
-        tools:text="Развернутое описание новости" />
+        tools:text="@string/details" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
