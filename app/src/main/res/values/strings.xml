@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">android_hw</string>
+    <string name="editNotification">Введите заголовок и содержание уведомления</string>
+    <string name="showNotification">Показать уведомление</string>
+    <string name="main_page">main page</string>
+    <string name="notification_settings">notification settings</string>
+    <string name="coroutine_settings">coroutine settings</string>
+    <string name="medium">Medium</string>
+    <string name="high">High</string>
+    <string name="urgent">Urgent</string>
+    <string name="importance">Важность</string>
+    <string name="visibility">Приватность</string>
+    <string name="public_btn">Public</string>
+    <string name="secret">Secret</string>
+    <string name="private_btn">Private</string>
+    <string name="hide">Скрыть содержимое при необходимости</string>
+    <string name="show_button">Отобразить кнопки</string>
+    <string name="arg_1">arg_1</string>
+    <string name="count">Количество</string>
+    <string name="acync">acync</string>
+    <string name="stop_in_background">Stop in background</string>
+    <string name="start">Выполнить</string>
 </resources>

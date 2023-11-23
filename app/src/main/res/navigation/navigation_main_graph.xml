@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main_ggraph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.kpfu.itis.android_hw.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_notificationSettingsFragment"
+            app:destination="@id/notificationSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coroutineSettingsFragment"
+        android:name="ru.kpfu.itis.android_hw.CoroutineSettingsFragment"
+        android:label="CoroutineSettingsFragment" />
+    <fragment
+        android:id="@+id/notificationSettingsFragment"
+        android:name="ru.kpfu.itis.android_hw.NotificationSettingsFragment"
+        android:label="NotificationSettingsFragment">
+    </fragment>
+</navigation>
