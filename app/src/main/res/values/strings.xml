@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">android_hw</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="new_series">New series</string>
+    <string name="add">add</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_year_of_release">Enter year of release</string>
+    <string name="enter_the_summary">Enter the summary</string>
+    <string name="profile">Profile</string>
+    <string name="your_name">Your name</string>
+    <string name="youremail_gmail_com">YourEmail@gmail.com</string>
+    <string name="_8_900_000_00_00">+8 (900) 000-00-00</string>
+    <string name="edit_phone_number">Edit phone number</string>
+    <string name="edit_password">Edit password</string>
+    <string name="delete_account">Delete account</string>
+    <string name="main">Main</string>
+    <string name="add_series">Add series</string>
+    <string name="title">Title</string>
+    <string name="summary">Summary</string>
+    <string name="title_1999">Title (1999)</string>
+    <string name="_0">(0)</string>
+    <string name="_0_0">0.0</string>
+    <string name="enter_image_link">Enter image link</string>
+    <string name="edit_your_data">Edit your data</string>
 </resources>
