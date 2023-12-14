@@ -11,7 +11,7 @@ import ru.kpfu.itis.android_hw.data.entity.UserEntity
 @Dao
 interface UserDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // todo нужно сделать правильно
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addUser(user: UserEntity)
 
     @Query("select * from user where id = :userId")

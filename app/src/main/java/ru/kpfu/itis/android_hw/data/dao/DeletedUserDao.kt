@@ -10,7 +10,7 @@ import ru.kpfu.itis.android_hw.data.entity.UserEntity
 @Dao
 interface DeletedUserDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // todo нужно сделать правильно
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addUser(user: DeletedUserEntity)
 
     @Query("DELETE FROM deleted WHERE deleteDate < :time")

@@ -22,7 +22,7 @@ interface RatingDao {
     @Query("select * from rating where userId = :userId and seriesId = :seriesId")
     fun getRatingById(userId : String, seriesId: String) : RatingEntity?
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // todo нужно сделать правильно
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addRating(rating: RatingEntity)
 
     @Query("update rating set rating = :rating where id = :id")

@@ -11,7 +11,7 @@ interface LikeDao {
     @Query("select * from likes where userId = :userId and seriesId = :seriesId")
     fun getLikeById(userId : String, seriesId: String) : LikeEntity?
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // todo нужно сделать правильно
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addLikes(like: LikeEntity)
 
     @Query("delete from likes where userId = :userId and seriesId = :seriesId")

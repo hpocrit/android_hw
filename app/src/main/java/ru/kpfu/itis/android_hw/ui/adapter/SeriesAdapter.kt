@@ -63,7 +63,7 @@ class SeriesAdapter(
                 var localData = dataSet.toMutableList()
                 localData.removeAt(i)
                 dataSet = localData.toList()
-                notifyDataSetChanged()
+                notifyItemRemoved(i)
                 return
             }
         }
@@ -84,14 +84,14 @@ class SeriesAdapter(
                 var localData = dataSet.toMutableList()
                 localData.removeAt(i)
                 dataSet = localData.toList()
-                notifyDataSetChanged()
+                notifyItemRemoved(i)
                 return
             }
         }
         var localData = dataSet.toMutableList()
         localData.add(series)
         dataSet = localData.toList()
-        notifyDataSetChanged()
+        notifyItemInserted(dataSet.size-1)
 
     }
 
