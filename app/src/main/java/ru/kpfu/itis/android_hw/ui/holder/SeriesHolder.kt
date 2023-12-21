@@ -6,18 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.kpfu.itis.android_hw.R
 import ru.kpfu.itis.android_hw.databinding.ItemSeriesBinding
+import ru.kpfu.itis.android_hw.model.Model
 import ru.kpfu.itis.android_hw.model.SeriesModel
 
 class SeriesHolder (
     val viewBinding: ItemSeriesBinding,
-    private val onLikeClicked: ((Int, SeriesModel) -> Unit),
-    private val onDeleteClicked: ((Int, SeriesModel) -> Unit),
+    private val onLikeClicked: ((Int, Model.SeriesModel) -> Unit),
+    private val onDeleteClicked: ((Int, Model.SeriesModel) -> Unit),
     private val ctx: Context,
-    private val isLiked: ((SeriesModel) -> Boolean),
-    private val countRating: ((SeriesModel) -> Float),
+    private val isLiked: ((Model.SeriesModel) -> Boolean),
+    private val countRating: ((Model.SeriesModel) -> Float),
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
-    private var item: SeriesModel? = null
+    private var item: Model.SeriesModel? = null
 
     init {
         viewBinding.likeBtnIv.setOnClickListener {
@@ -35,7 +36,7 @@ class SeriesHolder (
         }
     }
 
-    fun bindItem(item: SeriesModel) {
+    fun bindItem(item: Model.SeriesModel) {
         this.item = item
         with(viewBinding) {
             title.text = item.name + " (" + item.year + ")"

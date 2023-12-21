@@ -14,11 +14,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/likes_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/likes_rv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="15dp" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/series_rv"

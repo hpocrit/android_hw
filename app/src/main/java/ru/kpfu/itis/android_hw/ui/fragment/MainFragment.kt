@@ -27,6 +27,7 @@ import ru.kpfu.itis.android_hw.data.entity.SeriesEntity
 import ru.kpfu.itis.android_hw.data.entity.UserEntity
 import ru.kpfu.itis.android_hw.databinding.ActivityMainBinding
 import ru.kpfu.itis.android_hw.databinding.FragmentMainBinding
+import ru.kpfu.itis.android_hw.model.Model
 import ru.kpfu.itis.android_hw.model.SeriesModel
 import ru.kpfu.itis.android_hw.ui.adapter.SeriesAdapter
 import java.io.Serializable
@@ -74,45 +75,31 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             userId = ServiceLocator.getSharedPref().getString("USER_ID", "")
 
             if(userId != null) {
-                var series: List<SeriesModel>
+                var series: List<Model>
                 var seriesEntity: List<SeriesEntity>?
-                var likes: List<SeriesModel>
-                var likesEntity: List<String>?
+
 
                 var flag =  lifecycleScope.async (Dispatchers.IO) {
                     seriesEntity =  ServiceLocator.getDbInstance().seriesDao.getAllSeries()
 
-                    likesEntity = ServiceLocator.getDbInstance().likeDao.getLikeByUserId(userId!!)
-
-                    if(likesEntity?.isNotEmpty() == true) {
-                        likes = likesEntity!!.map { likesEntity -> entityToModel(ServiceLocator.getDbInstance().seriesDao.getSeriesInfoById(likesEntity)!!) }
-
-                        likeAdapter = SeriesAdapter(
-                            dataSet = likes,
-                            ctx = requireContext(),
-                            onLikeClicked = ::onLikeClicked,
-                            onDeleteClicked = ::onDeleteClicked,
-                            isLiked = ::isLiked,
-                            countRating = ::countRating,
-                            listener = ::setListener,
-                            getRating = ::getRating
-                        )
-
-                        likesRv.adapter = likeAdapter
-
-                        likesRv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                    }
 
                     if(seriesEntity != null) {
                         series = seriesEntity!!.map { seriesEntity -> entityToModel(seriesEntity) }
 
+                        val likesEntity = ServiceLocator.getDbInstance().likeDao.getLikeByUserId(userId!!)
+
                         when(order) {
-                            0 -> series = series.sortedBy { it.year }
-                            1 -> series = series.sortedBy { it.year }.reversed()
-                            2 -> series = series.sortedBy { getRating(it) }
-                            else -> series = series.sortedBy { getRating(it) }.reversed()
+                            0 -> series = series.sortedBy { (it as Model.SeriesModel).year }
+                            1 -> series = series.sortedBy { (it as Model.SeriesModel).year }.reversed()
+                            2 -> series = series.sortedBy { getRating((it as Model.SeriesModel)) }
+                            else -> series = series.sortedBy { getRating((it as Model.SeriesModel)) }.reversed()
                         }
 
+                        if (likesEntity?.isNotEmpty() == true && series[0] !is Model.FavoritesContainer) {
+                            var localData = series.toMutableList()
+                            localData.add(0, Model.FavoritesContainer)
+                            series = localData.toList()
+                        }
 
                         seriesAdapter = SeriesAdapter(
                             dataSet = series,
@@ -122,7 +109,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                             isLiked = ::isLiked,
                             countRating = ::countRating,
                             listener = ::setListener,
-                            getRating = ::getRating
+                            getRating = ::getRating,
+                            lifecycleScope = lifecycleScope
                         )
 
                         seriesRv.adapter = seriesAdapter
@@ -146,7 +134,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     }
 
-    private fun getRating(series: SeriesModel) : Float{
+    private fun getRating(series: Model.SeriesModel) : Float{
         var result: Float = 0.toFloat()
 
         runBlocking {
@@ -172,11 +160,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun onLikeClicked(position: Int, series: SeriesModel ) {
+    private fun onLikeClicked(position: Int, series: Model.SeriesModel ) {
         var likeId = ServiceLocator.getSharedPref().getInt("LIKE_ID", 10)
         var likeEntity: LikeEntity?
         lifecycleScope.launch(Dispatchers.IO) {
             likeEntity = ServiceLocator.getDbInstance().likeDao.getLikeById(userId!!, series.id)
+            val likes = ServiceLocator.getDbInstance().likeDao.getLikeByUserId(userId!!)
             if(likeEntity == null) {
                 ServiceLocator.getDbInstance().likeDao.addLikes(LikeEntity("id_${++likeId}", userId!!, series.id))
                 ServiceLocator.getSharedPref().edit().putInt("LIKE_ID", likeId).apply()
@@ -184,44 +173,44 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 ServiceLocator.getDbInstance().likeDao.deleteLikeById(userId!!, series.id)
             }
 
-            if(likeAdapter == null) {
+            if(likes == null) {
                 var likesEntity = ServiceLocator.getDbInstance().likeDao.getLikeByUserId(userId!!)
 
-                if(likesEntity?.isNotEmpty() == true) {
-                    var likes = likesEntity!!.map { likesEntity -> entityToModel(ServiceLocator.getDbInstance().seriesDao.getSeriesInfoById(likesEntity)!!) }
-
-                    likeAdapter = SeriesAdapter(
-                        dataSet = likes,
-                        ctx = requireContext(),
-                        onLikeClicked = ::onLikeClicked,
-                        onDeleteClicked = ::onDeleteClicked,
-                        isLiked = ::isLiked,
-                        countRating = ::countRating,
-                        listener = ::setListener,
-                        getRating = ::getRating
-                    )
-
-                    binding?.likesRv?.adapter = likeAdapter
-
-                    binding?.likesRv?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                }
+//                if(likesEntity?.isNotEmpty() == true) {
+//                    var likes = likesEntity!!.map { likesEntity -> entityToModel(ServiceLocator.getDbInstance().seriesDao.getSeriesInfoById(likesEntity)!!) }
+//
+//                    likeAdapter = SeriesAdapter(
+//                        dataSet = likes,
+//                        ctx = requireContext(),
+//                        onLikeClicked = ::onLikeClicked,
+//                        onDeleteClicked = ::onDeleteClicked,
+//                        isLiked = ::isLiked,
+//                        countRating = ::countRating,
+//                        listener = ::setListener,
+//                        getRating = ::getRating
+//                    )
+//
+//                    binding?.likesRv?.adapter = likeAdapter
+//
+//                    binding?.likesRv?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//                }
             }
         }
         seriesAdapter?.updateById(series.id)
-        likeAdapter?.updateLikeById(series)
+        seriesAdapter?.notifyItemChanged(0)
     }
 
-    private fun onDeleteClicked(position: Int, item: SeriesModel) {
+    private fun onDeleteClicked(position: Int, item: Model.SeriesModel) {
         lifecycleScope.launch(Dispatchers.IO) {
             ServiceLocator.getDbInstance().seriesDao.deleteSeriesById(item.id)
             ServiceLocator.getDbInstance().ratingDao.deleteRatingBySeriesId(item.id)
             ServiceLocator.getDbInstance().likeDao.deleteLikeBySeriesId(item.id)
         }
         seriesAdapter?.deleteById(item.id)
-        likeAdapter?.deleteById(item.id)
+        seriesAdapter?.notifyItemChanged(0)
     }
 
-    private fun isLiked(series: SeriesModel) : Boolean {
+    private fun isLiked(series: Model.SeriesModel) : Boolean {
         var likeEntity: LikeEntity? = null
 
         runBlocking {
@@ -233,7 +222,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         return likeEntity != null
     }
 
-    private fun countRating(series: SeriesModel) : Float {
+    private fun countRating(series: Model.SeriesModel) : Float {
         var ratings: List<RatingEntity>? = null
         runBlocking {
             withContext(Dispatchers.IO) {
@@ -248,7 +237,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun setListener(series: SeriesModel) {
+    private fun setListener(series: Model.SeriesModel) {
         parentFragmentManager
             .beginTransaction()
             .setReorderingAllowed(true)
@@ -257,8 +246,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             .commit()
     }
 
-    fun entityToModel(entity: SeriesEntity) : SeriesModel {
-        return SeriesModel(
+    fun entityToModel(entity: SeriesEntity) : Model.SeriesModel {
+        return Model.SeriesModel(
             entity.id,
             entity.name,
             entity.year,
