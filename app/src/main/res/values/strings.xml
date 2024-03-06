@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">android_hw</string>
+    <string name="enter">Enter</string>
+    <string name="enter_your_city">enter your city</string>
+
+    <string name="exception_400">Exception 400</string>
+    <string name="exception_401">Exception 401</string>
+    <string name="exception_404">Exception 404</string>
+    <string name="exception_429">Exception 429</string>
+    <string name="exception_5xx">Exception 5xx</string>
 </resources>
